@@ -1,0 +1,20 @@
+Build project
+
+cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build -G "MinGW Makefiles"
+
+cd build
+
+cmake --build . --config Release
+
+========================================================
+
+RUN Example
+
+mkdir compiled_examples
+
+gcc -Wall -std=c99 -I./include -I./build -o compiled_examples/pa_devs.exe examples/pa_devs.c -L./build -lportaudio -lwinmm -lole32 -luuid -lsetupapi -lksuser -ladvapi32
+gcc -Wall -std=c99 -I./include -I./build -o compiled_examples/paex_sine.exe examples/paex_sine.c -L./build -lportaudio -lwinmm -lole32 -luuid -lsetupapi -lksuser -ladvapi32
+
+./compiled_examples/pa_devs.exe
+./compiled_examples/paex_sine.exe
+
